@@ -2,14 +2,11 @@
 #include "ui_mainwindow.h"
 #include <QElapsedTimer>
 #include <QMessageBox>
-//#include "windows.h"
-//#pragma comment(lib,"user32.lib")
 
 HHOOK hHook;
 HWND hwnd;
 bool wasEnter;
 LRESULT CALLBACK MyLowLevelKeyBoardProc(int nCode, WPARAM wParam, LPARAM lParam);
-//HINSTANCE hModule;
 
 
 MainWindow::MainWindow(QWidget *parent) :
