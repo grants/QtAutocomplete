@@ -31,6 +31,8 @@ private slots:
     void killerTimerOver();
 
 
+    void on_infoLabel_linkActivated(const QString &link);
+
 private:
     Ui::MainWindow *ui;
 

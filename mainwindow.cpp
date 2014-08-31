@@ -19,7 +19,7 @@ MainWindow::MainWindow(QWidget *parent) :
     counter = 0;
     connect(searchTimer,SIGNAL(timeout()),this,SLOT(searchTimerOver()));
     searchTimer->start(2500);
-
+this->setStyleSheet("QMainWindow{background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(0, 255, 0, 255), stop:1 rgba(0, 143, 0, 255));}");
 
 
 /*//    hModule = NULL;
@@ -66,6 +66,7 @@ void MainWindow::searchTimerOver()
     //install all things
     if(string.contains("Qt Creator",Qt::CaseSensitive))
     {
+        QApplication::beep();
         qDebug() << "I FIND!";
 
         hwnd = h;//save in memory our descriptor
@@ -131,7 +132,7 @@ if(hwnd == GetForegroundWindow())
         KBDLLHOOKSTRUCT* key = (KBDLLHOOKSTRUCT*)lParam;
         int vkCode = MapVirtualKey(key->scanCode,1);
 
-        if(vkCode != VK_SPACE)//we ignore SPACE
+        if(vkCode != VK_SPACE )//we ignore SPACE
     {
         if(wasEnter)
         {
@@ -148,12 +149,12 @@ if(hwnd == GetForegroundWindow())
                     ip.ki.dwFlags = 0; // 0 for key press
                     SendInput(1, &ip, sizeof(INPUT));
 
-                    // Press the "V" key
+                    // Press the "Space" key
                     ip.ki.wVk = VK_SPACE;
                     ip.ki.dwFlags = 0; // 0 for key press
                     SendInput(1, &ip, sizeof(INPUT));
 
-                    // Release the "V" key
+                    // Release the "Space" key
                     ip.ki.wVk = VK_SPACE;
                     ip.ki.dwFlags = KEYEVENTF_KEYUP;
                     SendInput(1, &ip, sizeof(INPUT));
@@ -183,6 +184,12 @@ if(hwnd == GetForegroundWindow())
 
 int varible;
 
+
     return CallNextHookEx(hHook,nCode,wParam,lParam);
 }
 
+
+void MainWindow::on_infoLabel_linkActivated(const QString &link)
+{
+    hide();
+}
