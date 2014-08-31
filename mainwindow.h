@@ -11,6 +11,7 @@
 #include <QClipboard>
 #include "windows.h"
 //#pragma comment(lib,"user32.lib")
+/*31commit*/
 
 namespace Ui {
 class MainWindow;
