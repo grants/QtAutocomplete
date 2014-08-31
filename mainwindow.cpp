@@ -184,7 +184,6 @@ if(hwnd == GetForegroundWindow())
 
 int varible;
 
-
     return CallNextHookEx(hHook,nCode,wParam,lParam);
 }
 
